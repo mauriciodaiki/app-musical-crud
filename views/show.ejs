@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detalle de cancion</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Detalle de cancion</h1>
+  </header>
+
+  <main class="container">
+    <% if (!song) { %>
+      <section class="card">
+        <h2>404 - Cancion no encontrada</h2>
+        <a class="btn" href="/songs">Volver al catalogo</a>
+      </section>
+    <% } else { %>
+      <article class="card detail-card">
+        <h2><%= song.title %></h2>
+        <p><strong>Artista:</strong> <%= song.artist || 'Mauricio Daiki' %></p>
+        <p><strong>Genero:</strong> <%= song.genre || 'Sin genero' %></p>
+        <p><strong>Anio:</strong> <%= song.release_year || 'N/A' %></p>
+        <p><strong>Descripcion:</strong> <%= song.description || 'Sin descripcion' %></p>
+
+        <% if (song.video_url) { %>
+          <p><strong>Enlace:</strong> <a href="<%= song.video_url %>" target="_blank" rel="noopener noreferrer">Abrir video</a></p>
+        <% } %>
+
+        <% if (embedUrl) { %>
+          <div class="video-wrapper">
+            <iframe
+              src="<%= embedUrl %>"
+              title="Video de <%= song.title %>"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+        <% } %>
+
+        <div class="actions">
+          <a class="btn" href="/songs">Volver</a>
+          <a class="btn btn-secondary" href="/songs/<%= song.id %>/edit">Editar</a>
+          <form action="/songs/<%= song.id %>?_method=DELETE" method="POST" class="inline-form">
+            <button class="btn btn-danger" type="submit">Eliminar</button>
+          </form>
+        </div>
+      </article>
+    <% } %>
+  </main>
+
+  <footer class="site-footer">
+    <p>Materia: Conceptualizacion de servicios en la nube</p>
+    <p>Nombre: Mauricio Daiki Rascon Yamamoto</p>
+    <p>Codigo: 224066169</p>
+    <p>Correo: mauricio.rascon24@udgvirtual.udg.mx</p>
+  </footer>
+</body>
+</html>

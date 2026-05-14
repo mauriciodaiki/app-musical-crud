@@ -1,13 +1,20 @@
 {
   "name": "app-musical-crud",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Aplicacion CRUD de catalogo musical con Node.js, Express, EJS y PostgreSQL",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "dev": "node server.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "nodejs",
+    "express",
+    "ejs",
+    "postgresql",
+    "crud"
+  ],
+  "author": "Mauricio Daiki Rascon Yamamoto",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catalogo musical de Mauricio Daiki</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Catalogo musical de Mauricio Daiki</h1>
+    <a class="btn btn-primary" href="/songs/new">Agregar cancion</a>
+  </header>
+
+  <main class="container">
+    <% if (songs.length === 0) { %>
+      <section class="card">
+        <p>No hay canciones registradas todavia.</p>
+      </section>
+    <% } else { %>
+      <section class="grid">
+        <% songs.forEach((song) => { %>
+          <article class="card song-card">
+            <h2><%= song.title %></h2>
+            <p><strong>Artista:</strong> <%= song.artist || 'Mauricio Daiki' %></p>
+            <p><strong>Genero:</strong> <%= song.genre || 'Sin genero' %></p>
+            <p><strong>Anio:</strong> <%= song.release_year || 'N/A' %></p>
+            <div class="actions">
+              <a class="btn" href="/songs/<%= song.id %>">Ver detalle</a>
+              <a class="btn btn-secondary" href="/songs/<%= song.id %>/edit">Editar</a>
+              <form action="/songs/<%= song.id %>?_method=DELETE" method="POST" class="inline-form">
+                <button class="btn btn-danger" type="submit">Eliminar</button>
+              </form>
+            </div>
+          </article>
+        <% }) %>
+      </section>
+    <% } %>
+  </main>
+
+  <footer class="site-footer">
+    <p>Materia: Conceptualizacion de servicios en la nube</p>
+    <p>Nombre: Mauricio Daiki Rascon Yamamoto</p>
+    <p>Codigo: 224066169</p>
+    <p>Correo: mauricio.rascon24@udgvirtual.udg.mx</p>
+  </footer>
+</body>
+</html>

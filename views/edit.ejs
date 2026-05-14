@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editar cancion</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Editar cancion</h1>
+  </header>
+
+  <main class="container">
+    <section class="card form-card">
+      <form action="/songs/<%= song.id %>?_method=PUT" method="POST" class="song-form">
+        <label for="title">Titulo</label>
+        <input type="text" id="title" name="title" maxlength="150" value="<%= song.title %>" required />
+
+        <label for="artist">Artista</label>
+        <input type="text" id="artist" name="artist" maxlength="150" value="<%= song.artist || '' %>" />
+
+        <label for="genre">Genero</label>
+        <input type="text" id="genre" name="genre" maxlength="100" value="<%= song.genre || '' %>" />
+
+        <label for="release_year">Anio de lanzamiento</label>
+        <input type="number" id="release_year" name="release_year" min="1900" max="2100" value="<%= song.release_year || '' %>" />
+
+        <label for="video_url">URL de video</label>
+        <input type="url" id="video_url" name="video_url" value="<%= song.video_url || '' %>" />
+
+        <label for="description">Descripcion</label>
+        <textarea id="description" name="description" rows="4"><%= song.description || '' %></textarea>
+
+        <div class="actions">
+          <button type="submit" class="btn btn-primary">Actualizar cancion</button>
+          <a class="btn" href="/songs/<%= song.id %>">Cancelar</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Materia: Conceptualizacion de servicios en la nube</p>
+    <p>Nombre: Mauricio Daiki Rascon Yamamoto</p>
+    <p>Codigo: 224066169</p>
+    <p>Correo: mauricio.rascon24@udgvirtual.udg.mx</p>
+  </footer>
+</body>
+</html>
